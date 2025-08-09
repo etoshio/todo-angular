@@ -1,0 +1,17 @@
+.cdk-overlay-container,
+.cdk-global-overlay-wrapper,
+.cdk-overlay-pane,
+.mat-datepicker-content,
+.mat-mdc-select-panel {
+  z-index: 100000 !important;
+}
+
+.mat-mdc-select-panel,
+.mat-datepicker-content {
+  background: #fff !important;
+}
+.title { margin: 0 0 12px; }
+.form { display: grid; gap: 12px; }
+.row { display: grid; gap: 12px; }
+.actions { display:flex; gap:8px; margin-top:4px; }
+.w-100 { width: 100%; }

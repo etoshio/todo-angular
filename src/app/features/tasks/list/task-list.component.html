@@ -1,0 +1,62 @@
+<div class="stack">
+      <mat-card class="card">
+        <form [formGroup]="filterForm" (ngSubmit)="load()" class="toolbar">
+          <mat-form-field appearance="outline" class="status">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status">
+              <mat-option [value]="''">Todos</mat-option>
+              <mat-option value="PENDING">Pendente</mat-option>
+              <mat-option value="IN_PROGRESS">Em andamento</mat-option>
+              <mat-option value="COMPLETED">Concluída</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <span class="spacer"></span>
+
+          <button mat-stroked-button type="submit">Filtrar</button>
+          <button mat-raised-button color="primary" type="button" (click)="openNew()">
+            Nova tarefa
+          </button>
+        </form>
+      </mat-card>
+
+      <app-task-form
+        *ngIf="creating"
+        (saved)="afterCreate($event)"
+        (cancel)="creating=false">
+      </app-task-form>
+
+      <mat-card class="card list">
+        <h3 class="list-title">Tarefas</h3>
+
+        <div *ngIf="loading" class="placeholder">Carregando...</div>
+        <div *ngIf="!loading && tasks.length === 0" class="placeholder">Nenhuma tarefa encontrada.</div>
+
+        <div class="items" *ngIf="!loading && tasks.length">
+          <div class="task" *ngFor="let t of tasks">
+            <div class="task-head">
+              <div class="left">
+                <strong>{{ t.title }}</strong>
+                <span class="status-chip" [class.pend]="t.status==='PENDING'"
+                                          [class.prog]="t.status==='IN_PROGRESS'"
+                                          [class.done]="t.status==='COMPLETED'">
+                  {{ t.status }}
+                </span>
+              </div>
+              <div class="right">
+                <button mat-icon-button color="primary" [routerLink]="['/tasks', t.id]">
+                  <mat-icon>open_in_new</mat-icon>
+                </button>
+                <button mat-icon-button color="primary" (click)="markDone(t)" *ngIf="t.status!=='COMPLETED'">
+                  <mat-icon>check</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="remove(t)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+            <div class="desc" *ngIf="t.description">{{ t.description }}</div>
+          </div>
+        </div>
+      </mat-card>
+    </div>

@@ -1,0 +1,26 @@
+    .cdk-overlay-container,
+    .cdk-overlay-pane {
+      z-index: 10000 !important;
+    }
+    .stack { display: grid; gap: 20px; }
+    .toolbar { display:flex; gap:12px; align-items:center; }
+    .status { width: 260px; max-width: 100%; }
+    .spacer { flex: 1; }
+    .list { padding-top: 12px; }
+    .list-title { margin: 0 0 12px; }
+    .items { display: grid; gap: 10px; }
+    .task {
+      border: 1px solid #eee; border-radius: 12px; padding: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.04); background: #fff;
+    }
+    .task-head { display:flex; align-items:center; gap:8px; }
+    .left { display:flex; align-items:center; gap:10px; }
+    .right { margin-left:auto; display:flex; gap:4px; }
+    .desc { font-size: 13px; opacity: .85; margin-top: 6px; }
+    .status-chip {
+      font-size: 11px; padding: 2px 8px; border-radius: 999px; border: 1px solid transparent;
+    }
+    .status-chip.pend { color:#9c6; border-color:#9c6; }
+    .status-chip.prog { color:#06c; border-color:#06c; }
+    .status-chip.done { color:#0a8; border-color:#0a8; }
+    .placeholder { opacity:.7; font-size: 14px; padding: 12px; }
