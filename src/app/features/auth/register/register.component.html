@@ -1,0 +1,19 @@
+  <div class="row" style="place-items:center">
+    <mat-card class="card" style="max-width:420px;">
+      <h2>Cadastrar</h2>
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Usuário</mat-label>
+          <input matInput formControlName="username" required />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Senha</mat-label>
+          <input type="password" matInput formControlName="password" required />
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="w-100" [disabled]="form.invalid">Criar conta</button>
+      </form>
+      <div style="margin-top:12px">
+        <a routerLink="/login">Já tem conta? Entrar</a>
+      </div>
+    </mat-card>
+  </div>

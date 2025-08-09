@@ -1,0 +1,12 @@
+<mat-card class="card" *ngIf="task">
+  <h2 style="margin-top:0">{{task.title}}</h2>
+  <p>{{task.description}}</p>
+  <div style="opacity:.7;font-size:13px">Criada em: {{task.creationDate | date:'short'}}</div>
+  <div style="opacity:.7;font-size:13px">Vence em: {{task.dueDate | date:'short'}}</div>
+  <div style="margin-top:12px">Status: <strong>{{task.status}}</strong></div>
+  <div style="margin-top:16px; display:flex; gap:8px;">
+    <button mat-raised-button color="primary" (click)="editing=true">Editar</button>
+    <button mat-button (click)="back()">Voltar</button>
+  </div>
+</mat-card>
+<app-task-form *ngIf="editing && task" [value]="task" (saved)="afterSave($event)" (cancel)="editing=false"></app-task-form>
